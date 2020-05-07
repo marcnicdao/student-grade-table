@@ -5,7 +5,7 @@ class GradeForm {
         this.formElement.addEventListener('submit', this.handleSubmit)
         this.createGrade = null;
     }
-    onSubmit(createGrade) {
+    assignCreateGradeCallback(createGrade) {
         this.createGrade = createGrade;
     }
     handleSubmit(event) {

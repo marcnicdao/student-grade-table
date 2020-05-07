@@ -38,7 +38,7 @@ class App{
 
     start(){
         this.getGrades();
-        this.gradeForm.onSubmit(this.createGrade);
+        this.gradeForm.assignCreateGradeCallback(this.createGrade);
     }
 
     createGrade(name, course, grade){
