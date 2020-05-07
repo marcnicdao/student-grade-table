@@ -8,7 +8,7 @@ class App{
         this.getGrades = this.getGrades.bind(this);
         this.createGrade = this.createGrade.bind(this);
         this.handeleCreateGradeError = this.handeleCreateGradeError.bind(this);
-        this.handleCreateGradesSuccess = this.handleCreateGradeSuccess.bind(this)
+        this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this)
     }
 
     handleGetGradesError(error){
@@ -53,12 +53,8 @@ class App{
                 "grade": grade
             },
             headers: { "X-Access-Token": "4zYBwVu7" },
-            success: () => {
-                this.handleCreateGradeSuccess()
-            },
-            error: () => {
-                this.handeleCreateGradeError()
-            }
+            success: this.handleCreateGradeSuccess,
+            error: this.handeleCreateGradeError
         })
     }
 
