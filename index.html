@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js">
 </head>
+
 <body>
-    <header class = "d-flex justify-content-between col-8">
+    <header class="d-flex justify-content-between col">
         <h1 class="col5">Student Grade Table</h1>
-        <h2 class = "col5">Average Grade: <span class="badge badge-secondary"></span></h2>
+        <h2 class="col5">Average Grade: <span class="badge badge-secondary"></span></h2>
     </header>
+    <div class="col d-flex">
 
-    <table class="table col-8 table-striped" id="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Student Name</th>
-                <th>Course</th>
-                <th>Grade</th>
-            </tr>
-        </thead>
+        <table class="table col-9 table-striped" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+
+        <form action="" class="col-3">
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" id="name" placeholder="Name">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="course" class="col-sm-2 col-form-label"></label >
+                <div class="col-sm-10">
+                    <input type="text" name="course" id="course" placeholder="Course">
+
+                </div>
+            </div >
+
+            <div class="form-group row">
+                <label for="grade" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input type="text" name="grade" id="grade" placeholder="Grade">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-end">
+                <button>Add</button>
+                <button>Cancel</button>
+            </div>
+        </form>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="components/app.js"></script>
@@ -34,4 +67,5 @@
     <script src="components/page-header.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
