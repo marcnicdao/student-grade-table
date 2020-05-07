@@ -34,8 +34,7 @@ class GradeTable {
         deleteRowCourse.textContent = data.course;
         deleteRowGrade.textContent = data.grade;
 
-        deleteButton.className = "btn btn-danger";
-        deleteButton.textContent = 'DELETE';
+        deleteButton.className = "btn btn-danger fas fa-minus-circle";
         deleteButton.addEventListener('click', () => deleteGrade(data.id));
         deleteButtonCell.appendChild(deleteButton);
 
