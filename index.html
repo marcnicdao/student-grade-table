@@ -16,27 +16,30 @@
         <h2 class="col5">Average Grade: <span class="badge badge-secondary"></span></h2>
     </header>
     <div class="col d-flex">
+        <div class="col-9 ">
+            <table class="table table-striped" id="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Course</th>
+                        <th>Grade</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
 
-        <table class="table col-9 table-striped" id="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Student Name</th>
-                    <th>Course</th>
-                    <th>Grade</th>
-                    <th>Operations</th>
-                </tr>
-            </thead>
+                <tbody>
+                </tbody>
 
-            <tbody>
+            </table>
 
-            </tbody>
-        </table>
-        <p class="d-none" id="no-grades">No Grades Recorded</p>
+            <p class="d-none" id="no-grades">No Grades Recorded</p>
+        </div>
+
         <form action="" class="col-3">
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text fas fa-user id="basic-addon1"></span>
+                    <span class="input-group-text fas fa-user" id="basic-addon1"></span>
                 </div>
                 <input type="text" class="form-control" name="name" placeholder="Name">
             </div>
