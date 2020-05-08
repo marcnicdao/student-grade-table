@@ -11,6 +11,11 @@ class App{
         this.deleteGrade = this.deleteGrade.bind(this);
         this.handleDeleteGradeError = this.handleCreateGradeError.bind(this);
         this.handleDeleteGradeSuccess = this.handleCreateGradeSuccess.bind(this);
+        this.fillForm = this.fillForm.bind(this)
+        this.updateCurrentGrade = this.updateCurrentGrade.bind(this)
+        this.id = null
+        this.handleUpdateCurrentGradeSuccess = this.handleUpdateCurrentGradeSuccess.bind(this);
+        this.handleUpdateCurenntGradeError = this.handleUpdateCurrentGradeError.bind(this)
     }
 
     handleGetGradesError(error){
@@ -19,7 +24,7 @@ class App{
 
     handleGetGradesSuccess(grades){
         this.gradeTable.updateGrades(grades);
-
+        this.grades = grades
         var gradeSum = 0;
         for(var gradeIndex = 0; gradeIndex < grades.length; gradeIndex++){
             gradeSum += grades[gradeIndex].grade;
@@ -43,6 +48,8 @@ class App{
         this.getGrades();
         this.gradeForm.assignCreateGradeCallback(this.createGrade);
         this.gradeTable.assignDeleteGradeCallBack(this.deleteGrade);
+        this.gradeTable.assignFillFormCallBack(this.fillForm)
+        this.gradeForm.assignUpdateCurrentGradeCallBack(this.updateCurrentGrade);
     }
 
     createGrade(name, course, grade){
@@ -81,6 +88,41 @@ class App{
         console.error(error)
     }
     handleDeleteGradeSuccess(){
+        this.getGrade()
+    }
+    updateCurrentGrade(name, course, grade){
+        console.log(name,course,grade);
+        $.ajax({
+            method: "PATCH",
+            url: 'https://sgt.lfzprototypes.com/api/grades/' + this.id,
+            data:
+            {
+                "name": name || "",
+                "course": course || "",
+                "grade": grade || ""
+            },
+            headers: { "X-Access-Token": "4zYBwVu7" },
+            success: this.handleUpdateCurrentGradeSuccess,
+            error: this.handleUpdateCurrentGradeError
+        })
+    }
+    handleUpdateCurrentGradeError(error){
+        console.error(error);
+    }
+    handleUpdateCurrentGradeSuccess(){
         this.getGrades()
+    }
+    fillForm(index, id) {
+        var nameField = document.getElementById('name');
+        var courseField = document.getElementById('course');
+        var gradeField = document.getElementById('grade')
+        var addButton = document.getElementById('add')
+        var updateButton = document.getElementById('update')
+        addButton.classList.add('d-none')
+        updateButton.classList.remove('d-none')
+        nameField.value = this.grades[index].name;
+        courseField.value = this.grades[index].course;
+        gradeField.value = this.grades[index].grade;
+        this.id = id;
     }
 }
