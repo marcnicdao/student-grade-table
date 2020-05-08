@@ -20,7 +20,7 @@ h2{
         flex-direction: column;
         justify-content: center;
     }
-    form.col-3, .table-container{
+    .form-container.col-3, .table-container{
         max-width: 100%;
     }
     h1{
