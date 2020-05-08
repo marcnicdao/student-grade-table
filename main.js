@@ -2,6 +2,7 @@
 var submitUpdateElem = document.getElementById('update')
 var noGradesElem = document.getElementById('no-grades')
 var formElem = document.querySelector('form')
+formElem.cancelButton = document.getElementById('cancel')
 var gradeForm = new GradeForm(formElem, submitUpdateElem)
 var headerElem = document.querySelector('header');
 var pageHeader = new PageHeader(headerElem);

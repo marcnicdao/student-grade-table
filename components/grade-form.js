@@ -8,6 +8,7 @@ class GradeForm {
         this.handleUpdate = this.handleUpdate.bind(this)
         this.id = null
         this.fillForm = this.fillForm.bind(this)
+        this.formElement.cancelButton
     }
     assignCreateGradeCallback(createGrade) {
         this.createGrade = createGrade;
@@ -28,13 +29,14 @@ class GradeForm {
         var updateformName = updateformData.get('name');
         var updateformCourse = updateformData.get('course');
         var updateformGrade = updateformData.get('grade');
+        var formButton = document.getElementById('add');
 
         this.updateCurrentGrade(updateformName, updateformCourse, updateformGrade);
         this.formElement.reset();
 
         this.formElement.addEventListener('submit', this.handleSubmit)
         this.formElement.removeEventListener('submit', this.handleUpdate)
-
+        formButton.textContent = "Add"
     }
     assignUpdateCurrentGradeCallBack(updateCurrentGrade) {
         this.updateCurrentGrade = updateCurrentGrade
@@ -43,7 +45,9 @@ class GradeForm {
 
         var nameField = document.getElementById('name');
         var courseField = document.getElementById('course');
-        var gradeField = document.getElementById('grade')
+        var gradeField = document.getElementById('grade');
+        var formButton = document.getElementById('add');
+
 
         this.formElement.removeEventListener('submit', this.handleSubmit)
         this.formElement.addEventListener('submit', this.handleUpdate)
@@ -51,6 +55,11 @@ class GradeForm {
         nameField.value = this.grades[index].name;
         courseField.value = this.grades[index].course;
         gradeField.value = this.grades[index].grade;
+        formButton.textContent = "Update"
         this.id = id;
+    }
+    resetForm(){
+        this.formElement.addEventListener('submit', this.handleSubmit)
+        this.formElement.removeEventListener('submit', this.handleUpdate)
     }
 }
