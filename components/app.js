@@ -11,9 +11,7 @@ class App{
         this.deleteGrade = this.deleteGrade.bind(this);
         this.handleDeleteGradeError = this.handleCreateGradeError.bind(this);
         this.handleDeleteGradeSuccess = this.handleCreateGradeSuccess.bind(this);
-        this.fillForm = this.fillForm.bind(this)
         this.updateCurrentGrade = this.updateCurrentGrade.bind(this)
-        this.id = null
         this.handleUpdateCurrentGradeSuccess = this.handleUpdateCurrentGradeSuccess.bind(this);
         this.handleUpdateCurenntGradeError = this.handleUpdateCurrentGradeError.bind(this)
     }
@@ -24,7 +22,7 @@ class App{
 
     handleGetGradesSuccess(grades){
         this.gradeTable.updateGrades(grades);
-        this.grades = grades
+        this.gradeForm.grades = grades
         var gradeSum = 0;
         for(var gradeIndex = 0; gradeIndex < grades.length; gradeIndex++){
             gradeSum += grades[gradeIndex].grade;
@@ -48,7 +46,7 @@ class App{
         this.getGrades();
         this.gradeForm.assignCreateGradeCallback(this.createGrade);
         this.gradeTable.assignDeleteGradeCallBack(this.deleteGrade);
-        this.gradeTable.assignFillFormCallBack(this.fillForm)
+        this.gradeTable.assignFillFormCallBack(this.gradeForm.fillForm)
         this.gradeForm.assignUpdateCurrentGradeCallBack(this.updateCurrentGrade);
     }
 
@@ -94,7 +92,7 @@ class App{
         console.log(name,course,grade);
         $.ajax({
             method: "PATCH",
-            url: 'https://sgt.lfzprototypes.com/api/grades/' + this.id,
+            url: 'https://sgt.lfzprototypes.com/api/grades/' + this.gradeForm.id,
             data:
             {
                 "name": name || "",
@@ -112,17 +110,5 @@ class App{
     handleUpdateCurrentGradeSuccess(){
         this.getGrades()
     }
-    fillForm(index, id) {
-        var nameField = document.getElementById('name');
-        var courseField = document.getElementById('course');
-        var gradeField = document.getElementById('grade')
-        var addButton = document.getElementById('add')
-        var updateButton = document.getElementById('update')
-        addButton.classList.add('d-none')
-        updateButton.classList.remove('d-none')
-        nameField.value = this.grades[index].name;
-        courseField.value = this.grades[index].course;
-        gradeField.value = this.grades[index].grade;
-        this.id = id;
-    }
+
 }
